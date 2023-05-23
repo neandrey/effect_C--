@@ -1,3 +1,4 @@
+// Различное количество пробелов между приветствием и боковыми сторонами.
 #include <iostream>
 #include <string>
 
@@ -17,12 +18,13 @@ int main() {
 
     // Количество пустых строк между приветствием и одной из
     // горизонтальных границ рамки.
-    const int pad = 0;
+    const int top_bottom_side = 5;
+    const int left_right_side = 1;
 
     // Общее количество выводимых строк.
-    const int rows = pad * 2 + 3;
+    const int rows = top_bottom_side * 2 + 3;
 
-    const string::size_type cols = greeting.size() + pad * 2 + 2;
+    const string::size_type cols = greeting.size() + left_right_side * 2 + 2;
 
     cout << endl;
 
@@ -33,7 +35,7 @@ int main() {
     for (int r = 0; r != rows; ++r){
         string::size_type c = 0;
         while(c != cols){
-            if (r == pad + 1 && c == pad + 1) {
+            if (r == top_bottom_side + 1 && c == left_right_side + 1) {
                 cout << greeting;
                 c += greeting.size();
             } else {
