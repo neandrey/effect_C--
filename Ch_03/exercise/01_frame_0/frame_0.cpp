@@ -1,3 +1,4 @@
+// Рамка вплотную прилегает к тексту приветствия
 #include <iostream>
 #include <string>
 
