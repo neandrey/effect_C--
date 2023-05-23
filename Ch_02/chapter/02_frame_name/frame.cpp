@@ -3,7 +3,16 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
+
+std::size_t strlen_utf8(const std::string& str) {
+	std::size_t length = 0;
+	for (char c : str) {
+		if ((c & 0xC0) != 0x80) {
+			++length;
+		}
+	}
+	return length;
+}
 
 int main() {
 
@@ -12,10 +21,12 @@ int main() {
     std::cin >> name;
 
     // Создаем сообщение подлежащее выводу.
-    const std::string greeting = "Hello, " + name + "!";
+    const std::string greeting = "Привет, " + name + "!";
+
+    size_t l_greeting = strlen_utf8(greeting);
 
     // Создаем 2 и 4 строки приветствия
-    const std::string space(greeting.size(), ' ');
+    const std::string space(l_greeting, ' ');
     const std::string second = "* " + space + " *";
 
     // Создаем 1 и 5 строку приветствия.
