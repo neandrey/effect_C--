@@ -21,7 +21,7 @@ int main() {
     std::cin >> name;
 
     // Создаем сообщение подлежащее выводу.
-    const std::string greeting = "Привет, " + name + "!";
+    const std::string greeting {"Привет, " + name + "!"};
 
     size_t l_greeting = strlen_utf8(greeting);
 
