@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// выводит значение 1 - 10
 int main() {
 
     int i = 0;
