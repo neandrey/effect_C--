@@ -10,7 +10,7 @@ using std::endl;
 
 int main() {
 
-    string s = "http://google.com"; 
+    string s = "http://google.com  http://www.yandex.ru"; 
     vector<string> res;
 
     res = find_urls(s);
