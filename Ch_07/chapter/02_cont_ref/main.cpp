@@ -3,12 +3,14 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <set>
 #include "xref.h"
 //#include "split.h"
 
 using std::string;  using std::vector;
 using std::map;     using std::cout;
 using std::cin;     using std::endl; 
+using std::set;
 
 string find_line(const vector<int>&);
 
