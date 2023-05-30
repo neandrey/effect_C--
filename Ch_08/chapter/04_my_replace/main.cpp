@@ -1,4 +1,4 @@
-// find - последовательный доступ к элементу
+// replace 
 #include <iostream>
 #include <vector>
 #include <string>
