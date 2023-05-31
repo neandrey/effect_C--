@@ -22,4 +22,5 @@ int main() {
     res = duplicate_chars(arr);
 
     cout << res << endl;
+    delete[] res;
 }
