@@ -1,3 +1,4 @@
+// обработка входных аргументов командной строки.
 #include <iostream>
 
 using namespace std;
