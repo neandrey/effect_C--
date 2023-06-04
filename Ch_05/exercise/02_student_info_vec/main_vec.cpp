@@ -6,7 +6,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
-#include "Extract_fails.h" 
+#include "Extract_fails_vec.h" 
 #include "../../Student_info/Student_info.h"
 #include "../../Student_info/grade.h" 
 
@@ -18,9 +18,7 @@ using std::max;             using std::vector;
 using std::chrono::high_resolution_clock;
 using std::chrono::duration;
 using std::chrono::duration_cast;
-using std::chrono::microseconds;
-
-
+using std::chrono::milliseconds;
 
 int main() {
     
@@ -51,13 +49,15 @@ int main() {
 
     auto stop = high_resolution_clock::now();
 
-    auto duration = duration_cast<microseconds>(stop - start);
+    duration<double, std::milli> ms_double = stop - start;
 
-    cout << "Время работы extract_fails "
-         << duration.count() << " microseconds." << endl;
+    cout << "Время работы extract_fails_vector размерoм "
+         << fails.size() << " =  "
+         << ms_double.count() << " ms." << endl;
     
-    for (vector<Student_info>::size_type i = 0; i != fails.size(); ++i)
-        cout << fails[i].name << " " << grade(fails[i]) << endl;
+    // for (vector<Student_info>::size_type i = 0; i != fails.size(); ++i)
+    //     cout << fails[i].name << " " << grade(fails[i]) << endl;
+
     
     return 0;
 }

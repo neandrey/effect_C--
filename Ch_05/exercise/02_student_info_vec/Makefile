@@ -1,24 +1,38 @@
 #файл для сборки проекта 1_triangle
 CXX = g++
-#CXXFLAG = `fltk-config --ldflags --use-images`
+CXXFLAG = -Wall 
 CLEAN = rm -f
-PROGRAM_NAME = main.out
+PROGRAM_NAME_VEC  = main_vec.out
+PROGRAM_NAME_LIST = main_list.out 
 ######################################################
-objects = main.o Student_info.o grade.o median.o Extract_fails.o 
-main = main.cpp
-extract_fails	= Extract_fails.cpp
+obj_vec = main_vec.o Student_info.o grade.o median.o Extract_fails_vec.o 
+obj_list= main_list.o Student_info.o grade.o median.o Extract_fails_list.o 
+
+main_vec 	= main_vec.cpp
+main_list 	= main_list.cpp
+
+extract_fails_vec		= Extract_fails_vec.cpp
+extract_fails_list		= Extract_fails_list.cpp
+# direct_files
 path = ../../Student_info
 Student_info 	= $(path)/Student_info.cpp  
 grade			= $(path)/grade.cpp 
 median			= $(path)/median.cpp 
 
-all: $(PROGRAM_NAME)
+all: $(PROGRAM_NAME_LIST) 
+all: $(PROGRAM_NAME_VEC)
 
-$(PROGRAM_NAME): $(objects) 
-	$(CXX) $(CXXFLAG) $(objects) -o $(PROGRAM_NAME) 
+$(PROGRAM_NAME_LIST): $(obj_list) 
+	$(CXX) $(CXXFLAG) $(obj_list) -o $(PROGRAM_NAME_LIST) 
 
-main.o: $(main) 
-	$(CXX) -c $(main) 
+$(PROGRAM_NAME_VEC): $(obj_vec) 
+	$(CXX) $(CXXFLAG) $(obj_vec) -o $(PROGRAM_NAME_VEC) 
+
+main_vec.o: $(main_vec) 
+	$(CXX) -c $(main_vec) 
+
+main_list.o: $(main_list) 
+	$(CXX) -c $(main_list) 
 
 Student_info.o: $(Student_info) 
 	$(CXX) -c $(Student_info) 
@@ -29,11 +43,20 @@ grade.o: $(graph)
 median.o: $(median) 
 	$(CXX) -c $(median) 
 
-Extract_fails.o: $(extract_fails)
-	$(CXX) -c $(extract_fails)
+Extract_fails_vec.o: $(extract_fails_vec)
+	$(CXX) -c $(extract_fails_vec)
+
+Extract_fails_list.o: $(extract_fails_list)
+	$(CXX) -c $(extract_fails_list)
+
 
 test:
-	./main.out < data/grades 
+	./main_list.out < data/100
+	./main_list.out < data/1000
+	./main_list.out < data/10000
+	./main_vec.out < data/100
+	./main_vec.out < data/1000
+	./main_vec.out < data/10000
 
 clean:
 	$(CLEAN) *.o
