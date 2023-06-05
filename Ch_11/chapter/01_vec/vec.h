@@ -2,6 +2,7 @@
 #define VEC_H
 
 #include <memory>
+#include <iostream>
 
 template <class T>
 class Vec {
@@ -38,6 +39,18 @@ public:
         if (avail == limit)
             grow(); // получаем память
         unchecked_append(val);
+    }
+
+    // void erase(iterator pos){
+    //     for (auto it = begin(); it != end(); ++it) {
+    //         if(pos == it) {
+                
+    //         }
+    //     }
+    // }
+
+    void clear() {
+        uncreate();
     }
 
 private:
