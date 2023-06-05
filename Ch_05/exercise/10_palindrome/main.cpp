@@ -28,26 +28,16 @@ string str_lower(const string& s)
     return res;
 }
 
-void fill_from_file(vector<string>& dict, const string& name)
-{
-    ifstream ist {name};
-    if (!ist) throw runtime_error("Ошибка открытия файла");
+int main() {
+
+    vector<string> dict; 
+    ifstream ist {"dict_file"};
+    if (!ist) throw runtime_error("Ошибка открытия файла.");
 
     for (string temp; ist >> temp; ) {
         if (is_palindrom(str_lower(temp)))
             dict.push_back(temp);
         }
-}
-
-int main() {
-
-    vector<string> dict; 
-
-    try {
-        fill_from_file(dict, "dict_file");
-    } catch (runtime_error& e){
-        cout << e.what() << endl;
-    }
 
     sort(dict.begin(), dict.end(), compare);
     cout << *dict.begin() << endl;
