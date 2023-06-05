@@ -15,6 +15,7 @@ extract_fails_vec		= Extract_fails_vec.cpp
 extract_fails_list		= Extract_fails_list.cpp
 # direct_files
 path = ../../Student_info
+path_data = ../../Student_data
 Student_info 	= $(path)/Student_info.cpp  
 grade			= $(path)/grade.cpp 
 median			= $(path)/median.cpp 
@@ -51,12 +52,12 @@ Extract_fails_list.o: $(extract_fails_list)
 
 
 test:
-	./main_list.out < data/100
-	./main_list.out < data/1000
-	./main_list.out < data/10000
-	./main_vec.out < data/100
-	./main_vec.out < data/1000
-	./main_vec.out < data/10000
+	./main_list.out < $(path_data)/100
+	./main_list.out < $(path_data)/1000
+	./main_list.out < $(path_data)/10000
+	./main_vec.out < $(path_data)/100
+	./main_vec.out < $(path_data)/1000
+	./main_vec.out < $(path_data)/10000
 
 clean:
 	$(CLEAN) *.o
