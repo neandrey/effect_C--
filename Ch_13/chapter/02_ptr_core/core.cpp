@@ -53,13 +53,39 @@ istream& read_hw(istream& in, vector<double>& hw) {
     return in;
 }
 
-bool compare(const Core &c1, const Core &c2)
+istream& Student_info::read(istream& is)
 {
-    return c1.name() < c2.name();
+    delete cp;
+
+    char ch;
+    is >> ch;
+
+    if (ch == 'U') {
+        cp = new Core(is);
+    } else {
+        cp = new Grade(is);
+    }
+
+    return is;
 }
 
-bool compare_grades(const Core &c1, const Core &c2)
+Student_info::Student_info(const Student_info& s): cp{0}
 {
-    return c1.grade() < c2.grade();
+    if (s.cp)
+        cp = s.cp->clone();
 }
+
+Student_info& Student_info::operator=(const Student_info& s)
+{
+    if (&s != this) {
+        delete cp;
+        if (s.cp)
+            cp = s.cp->clone();
+        else
+            cp = 0;
+    }
+    return *this;
+}
+
+
 
