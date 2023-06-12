@@ -12,6 +12,7 @@ public:
     std::string name() const;
     virtual std::istream& read(std::istream&);
     virtual double grade() const;
+    virtual ~Core() {} // виртуальный деструктор
 protected:
     std::istream& read_common(std::istream&);
     double midterm, final;
