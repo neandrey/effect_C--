@@ -57,9 +57,3 @@ bool compare(const Core &c1, const Core &c2)
 {
     return c1.name() < c2.name();
 }
-
-bool compare_grades(const Core &c1, const Core &c2)
-{
-    return c1.grade() < c2.grade();
-}
-
