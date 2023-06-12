@@ -18,10 +18,12 @@ using std::runtime_error;
 int main() {
 
     ifstream ifs {"input.txt"};
-    if (!ifs) throw runtime_error {"Невозможно открыть файл"};
+    if (!ifs) throw runtime_error {
+        "Невозможно открыть файл"
+    };
     
-    vector<Grade> students;
-    Grade record;
+    vector<Student_info> students;
+    Student_info record;
     string::size_type maxlen = 0;
 
     while (record.read(ifs)) {
@@ -29,9 +31,10 @@ int main() {
         students.push_back(record);
     }
 
-    sort(students.begin(), students.end(), compare);
+    sort(students.begin(), students.end(), 
+         Student_info::compare);
 
-    for (vector<Grade>::size_type i = 0;
+    for (vector<Student_info>::size_type i = 0;
                         i != students.size(); ++i) {
         
         cout << students[i].name()
@@ -39,7 +42,7 @@ int main() {
                        ' ');
 
         try {
-            double final_grade = students[i].grade(); // Grade grade
+            double final_grade = students[i].grade(); 
             streamsize prec = cout.precision();
             cout << setprecision(3) << final_grade
                  << setprecision(prec) << endl; 

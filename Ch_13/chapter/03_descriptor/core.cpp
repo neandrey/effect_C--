@@ -63,3 +63,34 @@ bool compare_grades(const Core &c1, const Core &c2)
     return c1.grade() < c2.grade();
 }
 
+istream& Student_info::read(istream& is)
+{
+    delete cp;
+
+    char ch;
+    is >> ch;
+
+    if(ch == 'U')
+        cp = new Core(is);
+    else
+        cp = new Grade(is);
+
+    return is;
+}
+
+Student_info::Student_info(const Student_info& s) : cp(nullptr)
+{
+    if (s.cp) cp = s.cp->clone();
+}
+
+Student_info& Student_info::operator=(const Student_info& s)
+{
+    if (&s != this) {
+        delete cp;
+        if (s.cp)
+            cp = s.cp->clone();
+        else
+            cp = nullptr;
+    }
+    return *this;
+}
